@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shohruh | Student Programmer - Dombit International School</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            cyan: '#06b6d4',
+                            blue: '#3b82f6',
+                            purple: '#8b5cf6',
+                            neon: '#10b981',
+                            dark: '#070a12',
+                            card: '#0f172a',
+                            border: '#1e293b'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['Fira Code', 'JetBrains Mono', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Fonts & FontAwesome Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #070a12;
+            color: #f1f5f9;
+            overflow-x: hidden;
+        }
+
+        .font-mono {
+            font-family: 'Fira Code', monospace;
+        }
+
+        /* Glassmorphism Effect */
+        .glass {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-glow {
+            box-shadow: 0 0 30px -5px rgba(6, 182, 212, 0.25);
+        }
+
+        /* Text Glow Effects */
+        .glow-text-cyan {
+            text-shadow: 0 0 14px rgba(6, 182, 212, 0.6);
+        }
+        
+        .glow-text-purple {
+            text-shadow: 0 0 14px rgba(139, 92, 246, 0.6);
+        }
+
+        /* Grid Background Pattern */
+        .bg-grid {
+            background-size: 32px 32px;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        }
+
+        /* Ambient Glow Blobs */
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(90px);
+            opacity: 0.22;
+            z-index: 0;
+            animation: pulseBlob 9s infinite alternate ease-in-out;
+        }
+
+        @keyframes pulseBlob {
+            0% { transform: scale(1) translate(0px, 0px); }
+            100% { transform: scale(1.15) translate(30px, -20px); }
+        }
+
+        /* Custom Scrollbars */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #070a12;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #334155;
+        }
+
+        /* Typing Cursor Blink */
+        .typing-cursor::after {
+            content: '|';
+            animation: blink 1s infinite;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+    </style>
+</head>
+<body class="bg-brand-dark text-slate-200 antialiased selection:bg-brand-cyan selection:text-black bg-grid relative min-h-screen">
+
+    <!-- Ambient Glowing Background Elements -->
+    <div class="blob w-96 h-96 bg-brand-cyan top-10 left-5"></div>
+    <div class="blob w-[30rem] h-[30rem] bg-brand-purple top-1/3 right-5"></div>
+    <div class="blob w-96 h-96 bg-brand-blue bottom-10 left-1/3"></div>
+
+    <header class="sticky top-0 z-50 glass border-b border-slate-800/80 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#home" class="flex items-center gap-3 group">
+                <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-brand-cyan via-brand-blue to-brand-purple flex items-center justify-center font-mono font-bold text-xl text-white shadow-lg shadow-brand-cyan/20 group-hover:scale-105 transition-transform">
+                    &lt;S/&gt;
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-mono font-bold text-lg text-white tracking-tight group-hover:text-brand-cyan transition-colors">
+                        Shohruh<span class="text-brand-cyan">.dev</span>
+                    </span>
+                    <span class="text-[11px] text-slate-400 -mt-1 font-mono flex items-center gap-1">
+                        <i class="fa-solid fa-school text-brand-cyan"></i> Dombit Intl. School • 7B
+                    </span>
+                </div>
+            </a>
+
+            <!-- Desktop Links -->
+            <nav class="hidden lg:flex items-center gap-7 font-medium text-sm text-slate-300">
+                <a href="#home" class="hover:text-brand-cyan transition-colors flex items-center gap-1.5"><i class="fa-solid fa-house text-xs text-brand-cyan"></i> Home</a>
+                <a href="#about" class="hover:text-brand-cyan transition-colors flex items-center gap-1.5"><i class="fa-solid fa-user text-xs text-brand-cyan"></i> About</a>
+                <a href="#school" class="hover:text-brand-cyan transition-colors flex items-center gap-1.5"><i class="fa-solid fa-school text-xs text-brand-cyan"></i> Dombit School</a>
+                <a href="#skills" class="hover:text-brand-cyan transition-colors flex items-center gap-1.5"><i class="fa-solid fa-code text-xs text-brand-cyan"></i> Roadmap</a>
+                <a href="#playground" class="hover:text-brand-cyan transition-colors flex items-center gap-1.5"><i class="fa-solid fa-laptop-code text-xs text-brand-cyan"></i> Code Playground</a>
+                <a href="#projects" class="hover:text-brand-cyan transition-colors flex items-center gap-1.5"><i class="fa-solid fa-diagram-project text-xs text-brand-cyan"></i> Projects</a>
+                <a href="#contact" class="hover:text-brand-cyan transition-colors flex items-center gap-1.5"><i class="fa-solid fa-paper-plane text-xs text-brand-cyan"></i> Contact</a>
+            </nav>
+
+            <!-- CTA Header Button -->
+            <div class="hidden lg:block">
+                <a href="#contact" class="px-4 py-2.5 rounded-xl bg-gradient-to-r from-brand-cyan to-brand-blue text-slate-950 font-bold text-xs uppercase tracking-wider hover:shadow-lg hover:shadow-brand-cyan/25 transition-all transform hover:-translate-y-0.5 active:translate-y-0 flex items-center gap-2">
+                    <i class="fa-solid fa-paper-plane"></i> Contact Me
+                </a>
+            </div>
+
+            <!-- Mobile Menu Toggle Button -->
+            <button id="mobile-menu-btn" class="lg:hidden text-slate-300 hover:text-white p-2 rounded-lg focus:outline-none">
+                <i class="fa-solid fa-bars text-xl"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden glass border-b border-slate-800 px-5 pt-3 pb-6 space-y-3">
+            <a href="#home" class="mobile-link block py-2 text-slate-300 hover:text-brand-cyan font-medium"><i class="fa-solid fa-house me-2 text-brand-cyan"></i> Home</a>
+            <a href="#about" class="mobile-link block py-2 text-slate-300 hover:text-brand-cyan font-medium"><i class="fa-solid fa-user me-2 text-brand-cyan"></i> About</a>
+            <a href="#school" class="mobile-link block py-2 text-slate-300 hover:text-brand-cyan font-medium"><i class="fa-solid fa-school me-2 text-brand-cyan"></i> Dombit School</a>
+            <a href="#skills" class="mobile-link block py-2 text-slate-300 hover:text-brand-cyan font-medium"><i class="fa-solid fa-code me-2 text-brand-cyan"></i> Roadmap & Skills</a>
+            <a href="#playground" class="mobile-link block py-2 text-slate-300 hover:text-brand-cyan font-medium"><i class="fa-solid fa-laptop-code me-2 text-brand-cyan"></i> Code Playground</a>
+            <a href="#projects" class="mobile-link block py-2 text-slate-300 hover:text-brand-cyan font-medium"><i class="fa-solid fa-diagram-project me-2 text-brand-cyan"></i> Projects</a>
+            <a href="#contact" class="mobile-link block py-2 text-slate-300 hover:text-brand-cyan font-medium"><i class="fa-solid fa-paper-plane me-2 text-brand-cyan"></i> Contact</a>
+        </div>
+    </header>
+
+    <main class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <section id="home" class="min-h-[calc(100vh-5rem)] flex items-center justify-center py-16">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center w-full">
+                
+                <!-- Left Hero Text Content -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass border border-brand-cyan/30 text-brand-cyan text-xs font-mono font-medium tracking-wide">
+                        <span class="w-2.5 h-2.5 rounded-full bg-brand-neon animate-ping"></span>
+                        Dombit International School • Class 7B
+                    </div>
+
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight">
+                        Hello, I'm <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-cyan via-brand-blue to-brand-purple glow-text-cyan">Shohruh</span> 👋
+                    </h1>
+
+                    <div class="h-12 flex items-center justify-center lg:justify-start">
+                        <span class="font-mono text-xl sm:text-2xl font-bold text-slate-300">
+                            I am a <span id="typing-text" class="text-brand-cyan typing-cursor"></span>
+                        </span>
+                    </div>
+
+                    <p class="text-slate-400 text-base sm:text-lg max-w-2xl leading-relaxed mx-auto lg:mx-0">
+                        Passionate 7th-grade student at <strong class="text-slate-200">Dombit International School</strong>. I love solving algorithmic puzzles, building responsive web interfaces, and training to become a top-tier IT Software Engineer.
+                    </p>
+
+                    <!-- Hero Action Buttons -->
+                    <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
+                        <a href="#playground" class="px-6 py-3.5 rounded-xl bg-gradient-to-r from-brand-cyan to-brand-blue text-slate-950 font-bold text-sm hover:shadow-lg hover:shadow-brand-cyan/30 transition-all transform hover:-translate-y-0.5 active:translate-y-0 flex items-center gap-2">
+                            <i class="fa-solid fa-code"></i> Try Code Runner
+                        </a>
+                        <a href="#school" class="px-6 py-3.5 rounded-xl glass hover:border-brand-cyan/50 text-white font-mono text-sm hover:bg-slate-800/50 transition-all flex items-center gap-2">
+                            <i class="fa-solid fa-school text-brand-cyan"></i> Dombit School Card
+                        </a>
+                    </div>
+
+                    <!-- Quick Highlights Badges -->
+                    <div class="pt-8 border-t border-slate-800/80 grid grid-cols-3 gap-4 max-w-md mx-auto lg:mx-0 text-center">
+                        <div class="glass p-3 rounded-xl border border-slate-800">
+                            <div class="font-mono font-bold text-xl text-brand-cyan">Class 7B</div>
+                            <div class="text-[11px] text-slate-400 mt-0.5">Current Grade</div>
+                        </div>
+                        <div class="glass p-3 rounded-xl border border-slate-800">
+                            <div class="font-mono font-bold text-xl text-brand-purple">Python / JS</div>
+                            <div class="text-[11px] text-slate-400 mt-0.5">Focus Languages</div>
+                        </div>
+                        <div class="glass p-3 rounded-xl border border-slate-800">
+                            <div class="font-mono font-bold text-xl text-brand-neon">100%</div>
+                            <div class="text-[11px] text-slate-400 mt-0.5">IT Ambition</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Hero Code Simulation Card -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="relative w-full max-w-md">
+                        <!-- Neon Ring Glow Behind -->
+                        <div class="absolute -inset-1 rounded-3xl bg-gradient-to-r from-brand-cyan via-brand-blue to-brand-purple opacity-40 blur-lg animate-pulse"></div>
+                        
+                        <!-- Mini Code Card Container -->
+                        <div class="relative rounded-2xl glass border border-slate-700/60 overflow-hidden shadow-2xl">
+                            <div class="bg-slate-900/90 px-4 py-3 border-b border-slate-800 flex items-center justify-between">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-3 h-3 rounded-full bg-red-500/80"></div>
+                                    <div class="w-3 h-3 rounded-full bg-yellow-500/80"></div>
+                                    <div class="w-3 h-3 rounded-full bg-green-500/80"></div>
+                                </div>
+                                <span class="text-xs font-mono text-slate-400 flex items-center gap-1.5">
+                                    <i class="fa-brands fa-python text-brand-cyan"></i> student_profile.py
+                                </span>
+                                <div class="w-12"></div>
+                            </div>
+                            <div class="p-5 font-mono text-xs sm:text-sm leading-relaxed text-slate-300 bg-brand-dark/95 overflow-x-auto">
+                                <p><span class="text-brand-purple">class</span> <span class="text-yellow-400">StudentProgrammer</span>:</p>
+                                <p class="pl-4"><span class="text-brand-blue">def</span> <span class="text-green-400">__init__</span>(<span class="text-brand-cyan">self</span>):</p>
+                                <p class="pl-8"><span class="text-brand-cyan">self</span>.name = <span class="text-emerald-300">"Shohruh"</span></p>
+                                <p class="pl-8"><span class="text-brand-cyan">self</span>.school = <span class="text-emerald-300">"Dombit International School"</span></p>
+                                <p class="pl-8"><span class="text-brand-cyan">self</span>.class_grade = <span class="text-emerald-300">"7B"</span></p>
+                                <p class="pl-8"><span class="text-brand-cyan">self</span>.career_goal = <span class="text-emerald-300">"IT Programmer & Engineer"</span></p>
+                                <br>
+                                <p class="pl-4"><span class="text-brand-blue">def</span> <span class="text-green-400">code_daily</span>(<span class="text-brand-cyan">self</span>):</p>
+                                <p class="pl-8"><span class="text-brand-purple">return</span> <span class="text-emerald-300">"Building clean web apps & learning logic!"</span></p>
+                                <br>
+                                <p><span class="text-slate-500"># Initializing Shohruh's journey</span></p>
+                                <p>shohruh = StudentProgrammer()</p>
+                                <p><span class="text-brand-blue">print</span>(shohruh.code_daily())</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="about" class="py-20 border-t border-slate-800/60">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-mono font-bold text-brand-cyan uppercase tracking-widest mb-2"><i class="fa-solid fa-user-astronaut me-1"></i> Bio & Journey</h2>
+                <h3 class="text-3xl sm:text-4xl font-extrabold text-white">About Shohruh</h3>
+                <p class="text-slate-400 mt-3 text-sm sm:text-base">An ambitious 7th-grade student crafting digital tools and mastering modern programming languages.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+                <!-- Personal Story Card -->
+                <div class="lg:col-span-7 glass p-6 sm:p-8 rounded-2xl border border-slate-800 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="p-3.5 rounded-2xl bg-brand-cyan/10 text-brand-cyan border border-brand-cyan/20">
+                                <i class="fa-solid fa-graduation-cap text-3xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-white">Dombit International School Student</h4>
+                                <p class="text-xs text-brand-cyan font-mono">Class 7B • Tech & STEM Enthusiast</p>
+                            </div>
+                        </div>
+
+                        <div class="space-y-4 text-slate-300 text-sm sm:text-base leading-relaxed">
+                            <p>
+                                I am Shohruh, currently studying in <strong class="text-brand-cyan">Class 7B</strong> at <strong class="text-white">Dombit International School</strong>. My passion for technology began with an intense curiosity about how games, software, and websites operate.
+                            </p>
+                            <p>
+                                Outside of my regular academic studies, I spend my time coding in JavaScript and Python, creating web interfaces, solving mathematical logic problems, and building projects that make learning fun.
+                            </p>
+                            <p>
+                                My primary dream is to become a full-fledged <strong class="text-brand-purple">IT Programmer and Software Engineer</strong> who builds useful, innovative applications for the global community.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Tech Tags -->
+                    <div class="mt-8 pt-6 border-t border-slate-800 flex flex-wrap gap-2">
+                        <span class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-xs font-mono text-slate-300"><i class="fa-solid fa-terminal text-brand-cyan me-1"></i> Algorithm Design</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-xs font-mono text-slate-300"><i class="fa-solid fa-code text-brand-purple me-1"></i> Web Frontend</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-xs font-mono text-slate-300"><i class="fa-brands fa-python text-brand-neon me-1"></i> Python Scripts</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-xs font-mono text-slate-300"><i class="fa-solid fa-calculator text-yellow-400 me-1"></i> Mathematics</span>
+                    </div>
+                </div>
+
+                <!-- Profile Stats Card -->
+                <div class="lg:col-span-5 glass p-6 sm:p-8 rounded-2xl border border-slate-800 flex flex-col justify-between">
+                    <h4 class="text-lg font-bold text-white mb-6 flex items-center gap-2 border-b border-slate-800 pb-3">
+                        <i class="fa-solid fa-address-card text-brand-cyan"></i> Student Profile Summary
+                    </h4>
+
+                    <div class="space-y-3.5">
+                        <div class="flex justify-between items-center p-3 rounded-xl bg-slate-900/80 border border-slate-800">
+                            <span class="text-xs text-slate-400 font-mono">Full Name</span>
+                            <span class="text-sm font-semibold text-white">Shohruh</span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 rounded-xl bg-slate-900/80 border border-slate-800">
+                            <span class="text-xs text-slate-400 font-mono">School</span>
+                            <span class="text-sm font-semibold text-brand-cyan">Dombit International School</span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 rounded-xl bg-slate-900/80 border border-slate-800">
+                            <span class="text-xs text-slate-400 font-mono">Grade & Class</span>
+                            <span class="text-sm font-semibold text-brand-purple">7B</span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 rounded-xl bg-slate-900/80 border border-slate-800">
+                            <span class="text-xs text-slate-400 font-mono">Career Vision</span>
+                            <span class="text-sm font-semibold text-brand-neon">IT Programmer / Engineer</span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 rounded-xl bg-slate-900/80 border border-slate-800">
+                            <span class="text-xs text-slate-400 font-mono">Key Interests</span>
+                            <span class="text-sm font-semibold text-yellow-400">Web Dev & Python Coding</span>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 p-4 rounded-xl bg-gradient-to-r from-brand-cyan/10 to-brand-purple/10 border border-brand-cyan/20 text-center">
+                        <p class="text-xs text-slate-300 italic font-mono">
+                            "Learning to program is learning how to think and build solutions."
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="school" class="py-20 border-t border-slate-800/60">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-mono font-bold text-brand-cyan uppercase tracking-widest mb-2"><i class="fa-solid fa-school me-1"></i> Academic Institution</h2>
+                <h3 class="text-3xl sm:text-4xl font-extrabold text-white">Dombit International School</h3>
+                <p class="text-slate-400 mt-3 text-sm sm:text-base">Where my passion for science, mathematics, and computer technology is nurtured every day.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                
+                <!-- School Visual Picture Frame Card -->
+                <div class="lg:col-span-6 glass rounded-2xl border border-slate-700/80 overflow-hidden shadow-2xl group">
+                    <div class="relative overflow-hidden aspect-video bg-slate-900">
+                        <!-- Custom Stylized School Campus Visual Image Canvas / Render -->
+                        <svg class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" viewBox="0 0 800 450" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Background Sky -->
+                            <rect width="800" height="450" fill="url(#skyGradient)" />
+                            <defs>
+                                <linearGradient id="skyGradient" x1="0" y1="0" x2="800" y2="450" gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="#0f172a"/>
+                                    <stop offset="0.5" stop-color="#1e1b4b"/>
+                                    <stop offset="1" stop-color="#0f2744"/>
+                                </linearGradient>
+                                <linearGradient id="buildingGrad" x1="0" y1="0" x2="0" y2="300" gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="#1e293b"/>
+                                    <stop offset="1" stop-color="#0f172a"/>
+                                </linearGradient>
+                                <linearGradient id="goldAccent" x1="0" y1="0" x2="1" y2="0">
+                                    <stop stop-color="#06b6d4"/>
+                                    <stop offset="1" stop-color="#3b82f6"/>
+                                </linearGradient>
+                            </defs>
+                            
+                            <!-- Grid Overlay on Sky -->
+                            <path d="M0 50H800 M0 100H800 M0 150H800 M0 200H800" stroke="#334155" stroke-opacity="0.2" stroke-dasharray="4 4"/>
+                            
+                            <!-- Stars/Tech Sparkles -->
+                            <circle cx="150" cy="80" r="2" fill="#06b6d4" opacity="0.8"/>
+                            <circle cx="650" cy="60" r="1.5" fill="#8b5cf6" opacity="0.9"/>
+                            <circle cx="400" cy="90" r="2" fill="#10b981" opacity="0.7"/>
+
+                            <!-- Campus Main Building Structure -->
+                            <rect x="150" y="160" width="500" height="220" rx="8" fill="url(#buildingGrad)" stroke="#334155" stroke-width="2"/>
+                            
+                            <!-- Modern Glass Facade Entrance Center -->
+                            <rect x="340" y="130" width="120" height="250" rx="6" fill="#1e293b" stroke="#06b6d4" stroke-width="2"/>
+                            <!-- School Clock/Logo Emblem Circle -->
+                            <circle cx="400" cy="180" r="28" fill="#0f172a" stroke="#06b6d4" stroke-width="2"/>
+                            <path d="M400 162V180H412" stroke="#06b6d4" stroke-width="2" stroke-linecap="round"/>
+                            
+                            <!-- Windows Grid on Main Building -->
+                            <!-- Left Wing Windows -->
+                            <rect x="180" y="200" width="35" height="30" rx="4" fill="#06b6d4" fill-opacity="0.3" stroke="#06b6d4" stroke-opacity="0.5"/>
+                            <rect x="230" y="200" width="35" height="30" rx="4" fill="#06b6d4" fill-opacity="0.3" stroke="#06b6d4" stroke-opacity="0.5"/>
+                            <rect x="280" y="200" width="35" height="30" rx="4" fill="#06b6d4" fill-opacity="0.3" stroke="#06b6d4" stroke-opacity="0.5"/>
+                            
+                            <rect x="180" y="250" width="35" height="30" rx="4" fill="#8b5cf6" fill-opacity="0.3" stroke="#8b5cf6" stroke-opacity="0.5"/>
+                            <rect x="230" y="250" width="35" height="30" rx="4" fill="#8b5cf6" fill-opacity="0.3" stroke="#8b5cf6" stroke-opacity="0.5"/>
+                            <rect x="280" y="250" width="35" height="30" rx="4" fill="#8b5cf6" fill-opacity="0.3" stroke="#8b5cf6" stroke-opacity="0.5"/>
+
+                            <!-- Right Wing Windows -->
+                            <rect x="480" y="200" width="35" height="30" rx="4" fill="#06b6d4" fill-opacity="0.3" stroke="#06b6d4" stroke-opacity="0.5"/>
+                            <rect x="530" y="200" width="35" height="30" rx="4" fill="#06b6d4" fill-opacity="0.3" stroke="#06b6d4" stroke-opacity="0.5"/>
+                            <rect x="580" y="200" width="35" height="30" rx="4" fill="#06b6d4" fill-opacity="0.3" stroke="#06b6d4" stroke-opacity="0.5"/>
+                            
+                            <rect x="480" y="250" width="35" height="30" rx="4" fill="#8b5cf6" fill-opacity="0.3" stroke="#8b5cf6" stroke-opacity="0.5"/>
+                            <rect x="530" y="250" width="35" height="30" rx="4" fill="#8b5cf6" fill-opacity="0.3" stroke="#8b5cf6" stroke-opacity="0.5"/>
+                            <rect x="580" y="250" width="35" height="30" rx="4" fill="#8b5cf6" fill-opacity="0.3" stroke="#8b5cf6" stroke-opacity="0.5"/>
+
+                            <!-- Entrance Glass Doors -->
+                            <rect x="370" y="310" width="60" height="70" fill="#0284c7" fill-opacity="0.4" stroke="#38bdf8" stroke-width="2"/>
+                            
+                            <!-- Flagpole -->
+                            <line x1="120" y1="120" x2="120" y2="380" stroke="#94a3b8" stroke-width="3"/>
+                            <polygon points="120,130 170,145 120,160" fill="url(#goldAccent)"/>
+
+                            <!-- Campus Lawn / Foreground -->
+                            <rect x="0" y="380" width="800" height="70" fill="#051923"/>
+                            <path d="M0 380 Q 200 370 400 380 T 800 380 V 450 H 0 Z" fill="#092d38"/>
+
+                            <!-- Banner Title Overlay inside Graphic -->
+                            <rect x="220" y="20" width="360" height="40" rx="20" fill="#0f172a" fill-opacity="0.9" stroke="#06b6d4" stroke-width="1.5"/>
+                            <text x="400" y="45" font-family="sans-serif" font-weight="bold" font-size="16" fill="#ffffff" text-anchor="middle">DOMBIT INTERNATIONAL SCHOOL</text>
+                        </svg>
+
+                        <!-- Badge Overlay -->
+                        <div class="absolute top-4 right-4 bg-slate-900/90 backdrop-blur-md px-3 py-1.5 rounded-xl border border-brand-cyan/40 text-xs font-mono text-brand-cyan flex items-center gap-1.5 shadow-lg">
+                            <i class="fa-solid fa-award text-yellow-400"></i> Cambridge / STEM Focus
+                        </div>
+                    </div>
+
+                    <div class="p-6 bg-slate-900/90 border-t border-slate-800">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <h4 class="text-lg font-bold text-white">Dombit School Campus</h4>
+                                <p class="text-xs text-slate-400 font-mono">Modern Education & Technology Hub</p>
+                            </div>
+                            <span class="px-3 py-1 rounded-full bg-brand-cyan/10 text-brand-cyan border border-brand-cyan/30 text-xs font-mono font-bold">Class 7B</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- School Info & Academic Pillars -->
+                <div class="lg:col-span-6 space-y-6">
+                    <div class="glass p-6 rounded-2xl border border-slate-800 space-y-4">
+                        <h4 class="text-xl font-bold text-white flex items-center gap-2">
+                            <i class="fa-solid fa-landmark text-brand-cyan"></i> Learning Environment & Curriculum
+                        </h4>
+                        <p class="text-slate-300 text-sm leading-relaxed">
+                            Dombit International School provides a high-standard academic environment with strong emphasis on mathematics, computer science, physical sciences, and modern languages.
+                        </p>
+                    </div>
+
+                    <!-- School Highlights Grid -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        
+                        <div class="glass p-4 rounded-xl border border-slate-800">
+                            <div class="w-8 h-8 rounded-lg bg-brand-cyan/10 text-brand-cyan flex items-center justify-center mb-2">
+                                <i class="fa-solid fa-laptop-code"></i>
+                            </div>
+                            <h5 class="text-sm font-bold text-white">STEM & Computer Labs</h5>
+                            <p class="text-xs text-slate-400 mt-1">Modern computer labs equipping students with hands-on coding skills.</p>
+                        </div>
+
+                        <div class="glass p-4 rounded-xl border border-slate-800">
+                            <div class="w-8 h-8 rounded-lg bg-brand-purple/10 text-brand-purple flex items-center justify-center mb-2">
+                                <i class="fa-solid fa-book-open"></i>
+                            </div>
+                            <h5 class="text-sm font-bold text-white">Class 7B Curriculum</h5>
+                            <p class="text-xs text-slate-400 mt-1">Class 7B focuses on advanced mathematics, logic, and computing foundations.</p>
+                        </div>
+
+                        <div class="glass p-4 rounded-xl border border-slate-800">
+                            <div class="w-8 h-8 rounded-lg bg-brand-neon/10 text-brand-neon flex items-center justify-center mb-2">
+                                <i class="fa-solid fa-globe"></i>
+                            </div>
+                            <h5 class="text-sm font-bold text-white">International Standards</h5>
+                            <p class="text-xs text-slate-400 mt-1">English-medium learning environment fostering global tech literacy.</p>
+                        </div>
+
+                        <div class="glass p-4 rounded-xl border border-slate-800">
+                            <div class="w-8 h-8 rounded-lg bg-yellow-400/10 text-yellow-400 flex items-center justify-center mb-2">
+                                <i class="fa-solid fa-people-group"></i>
+                            </div>
+                            <h5 class="text-sm font-bold text-white">Collaborative Spirit</h5>
+                            <p class="text-xs text-slate-400 mt-1">Encouraging team projects, quizzes, and software creations.</p>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="skills" class="py-20 border-t border-slate-800/60">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-mono font-bold text-brand-cyan uppercase tracking-widest mb-2"><i class="fa-solid fa-layer-group me-1"></i> Progression Path</h2>
+                <h3 class="text-3xl sm:text-4xl font-extrabold text-white">Class 7B to IT Software Engineer</h3>
+                <p class="text-slate-400 mt-3 text-sm sm:text-base">My step-by-step technical skills progress and multi-year learning roadmap.</p>
+            </div>
+
+            <!-- Skills Progress Bars -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+                
+                <div class="glass p-5 rounded-xl border border-slate-800">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-sm font-bold text-white flex items-center gap-2">
+                            <i class="fa-brands fa-html5 text-orange-500"></i> HTML5 & CSS3 Web Markup
+                        </span>
+                        <span class="text-xs font-mono text-brand-cyan">85% - Advanced</span>
+                    </div>
+                    <div class="w-full bg-slate-800 h-2.5 rounded-full overflow-hidden">
+                        <div class="bg-gradient-to-r from-orange-500 to-brand-cyan h-full rounded-full w-[85%]"></div>
+                    </div>
+                </div>
+
+                <div class="glass p-5 rounded-xl border border-slate-800">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-sm font-bold text-white flex items-center gap-2">
+                            <i class="fa-brands fa-js text-yellow-400"></i> JavaScript DOM & Interactivity
+                        </span>
+                        <span class="text-xs font-mono text-brand-purple">72% - Intermediate</span>
+                    </div>
+                    <div class="w-full bg-slate-800 h-2.5 rounded-full overflow-hidden">
+                        <div class="bg-gradient-to-r from-yellow-400 to-brand-purple h-full rounded-full w-[72%]"></div>
+                    </div>
+                </div>
+
+                <div class="glass p-5 rounded-xl border border-slate-800">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-sm font-bold text-white flex items-center gap-2">
+                            <i class="fa-brands fa-python text-blue-400"></i> Python Programming
+                        </span>
+                        <span class="text-xs font-mono text-brand-blue">78% - Active Study</span>
+                    </div>
+                    <div class="w-full bg-slate-800 h-2.5 rounded-full overflow-hidden">
+                        <div class="bg-gradient-to-r from-blue-400 to-brand-blue h-full rounded-full w-[78%]"></div>
+                    </div>
+                </div>
+
+                <div class="glass p-5 rounded-xl border border-slate-800">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-sm font-bold text-white flex items-center gap-2">
+                            <i class="fa-solid fa-brain text-brand-neon"></i> Logic & Math Problem Solving
+                        </span>
+                        <span class="text-xs font-mono text-brand-neon">80% - Strong</span>
+                    </div>
+                    <div class="w-full bg-slate-800 h-2.5 rounded-full overflow-hidden">
+                        <div class="bg-gradient-to-r from-brand-neon to-emerald-400 h-full rounded-full w-[80%]"></div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Roadmap Milestones -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <div class="glass p-6 rounded-2xl border border-brand-cyan/40 relative">
+                    <div class="w-8 h-8 rounded-full bg-brand-cyan text-slate-950 font-mono font-bold flex items-center justify-center mb-3 text-xs">01</div>
+                    <span class="inline-block px-2.5 py-0.5 rounded bg-brand-cyan/20 text-brand-cyan text-[10px] font-mono mb-2">FOUNDATION</span>
+                    <h5 class="text-base font-bold text-white">Scratch & Block Logic</h5>
+                    <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+                        Understanding variables, loops, conditional statements, and sequential algorithms through visual blocks.
+                    </p>
+                </div>
+
+                <div class="glass p-6 rounded-2xl border border-brand-purple/40 relative">
+                    <div class="w-8 h-8 rounded-full bg-brand-purple text-white font-mono font-bold flex items-center justify-center mb-3 text-xs">02</div>
+                    <span class="inline-block px-2.5 py-0.5 rounded bg-brand-purple/20 text-brand-purple text-[10px] font-mono mb-2">CLASS 7B ACTIVE</span>
+                    <h5 class="text-base font-bold text-white">Web Frontend & Python</h5>
+                    <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+                        Building responsive webpages with HTML/CSS/Tailwind and mastering core Python 3 scripts & algorithms.
+                    </p>
+                </div>
+
+                <div class="glass p-6 rounded-2xl border border-slate-800 relative">
+                    <div class="w-8 h-8 rounded-full bg-slate-800 text-slate-300 font-mono font-bold flex items-center justify-center mb-3 text-xs">03</div>
+                    <span class="inline-block px-2.5 py-0.5 rounded bg-slate-800 text-slate-400 text-[10px] font-mono mb-2">NEXT STEP</span>
+                    <h5 class="text-base font-bold text-white">Frameworks & Databases</h5>
+                    <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+                        Learning React, Node.js, and SQL/NoSQL databases to craft full-stack dynamic web applications.
+                    </p>
+                </div>
+
+                <div class="glass p-6 rounded-2xl border border-slate-800 relative">
+                    <div class="w-8 h-8 rounded-full bg-slate-800 text-slate-300 font-mono font-bold flex items-center justify-center mb-3 text-xs">04</div>
+                    <span class="inline-block px-2.5 py-0.5 rounded bg-slate-800 text-slate-400 text-[10px] font-mono mb-2">CAREER GOAL</span>
+                    <h5 class="text-base font-bold text-white">Full IT Software Engineer</h5>
+                    <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+                        Architecting complex software systems, contributing to global tech projects, and engineering high-impact tools.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="playground" class="py-20 border-t border-slate-800/60">
+            <div class="text-center max-w-3xl mx-auto mb-14">
+                <h2 class="text-xs font-mono font-bold text-brand-cyan uppercase tracking-widest mb-2"><i class="fa-solid fa-laptop-code me-1"></i> Live Interactive Sandbox</h2>
+                <h3 class="text-3xl sm:text-4xl font-extrabold text-white">Code Runner & Shell Terminal</h3>
+                <p class="text-slate-400 mt-3 text-sm sm:text-base">Run live HTML/JS or Python snippets in the code runner, or query Shohruh's custom CLI terminal.</p>
+            </div>
+
+            <!-- Dual Tab Switcher -->
+            <div class="flex justify-center gap-3 mb-8">
+                <button id="tab-runner-btn" onclick="switchPlaygroundTab('runner')" class="px-5 py-2.5 rounded-xl font-mono text-xs font-bold transition-all bg-brand-cyan text-slate-950 shadow-lg shadow-brand-cyan/20 flex items-center gap-2">
+                    <i class="fa-solid fa-play"></i> Code Playground Runner
+                </button>
+                <button id="tab-terminal-btn" onclick="switchPlaygroundTab('terminal')" class="px-5 py-2.5 rounded-xl font-mono text-xs font-bold transition-all bg-slate-800 text-slate-300 hover:text-white flex items-center gap-2">
+                    <i class="fa-solid fa-terminal"></i> CLI Interactive Terminal
+                </button>
+            </div>
+
+            <!-- Tab 1: Live Code Editor & Preview Runner -->
+            <div id="playground-runner" class="max-w-5xl mx-auto glass rounded-2xl border border-slate-700/80 overflow-hidden shadow-2xl">
+                <div class="bg-slate-900 px-4 py-3 border-b border-slate-800 flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <span class="text-xs font-mono text-slate-400">Language:</span>
+                        <select id="code-lang-select" onchange="loadPresetCode()" class="bg-slate-800 border border-slate-700 rounded-lg px-2.5 py-1 text-xs text-white font-mono focus:outline-none focus:border-brand-cyan">
+                            <option value="html">HTML / CSS / JS Sandbox</option>
+                            <option value="python">Python Simulation Script</option>
+                        </select>
+                    </div>
+                    <button onclick="runCodePlayground()" class="px-4 py-1.5 rounded-lg bg-gradient-to-r from-brand-cyan to-brand-blue text-slate-950 font-mono font-bold text-xs hover:shadow-md hover:shadow-brand-cyan/30 transition-all flex items-center gap-1.5">
+                        <i class="fa-solid fa-play"></i> Run Code
+                    </button>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2">
+                    <!-- Editor Left Panel -->
+                    <div class="p-4 bg-slate-950/90 border-b lg:border-b-0 lg:border-r border-slate-800 flex flex-col justify-between">
+                        <div class="mb-2 flex items-center justify-between text-xs text-slate-400 font-mono">
+                            <span><i class="fa-solid fa-code text-brand-cyan me-1"></i> Editor Window</span>
+                            <span class="text-[10px] text-slate-500">Editable</span>
+                        </div>
+                        <textarea id="code-editor" class="w-full h-64 bg-transparent font-mono text-xs text-emerald-400 focus:outline-none resize-none leading-relaxed p-2 border border-slate-800/80 rounded-xl" spellcheck="false"></textarea>
+                    </div>
+
+                    <!-- Live Preview Right Panel -->
+                    <div class="p-4 bg-slate-900/60 flex flex-col justify-between">
+                        <div class="mb-2 flex items-center justify-between text-xs text-slate-400 font-mono">
+                            <span><i class="fa-solid fa-desktop text-brand-purple me-1"></i> Execution Preview Output</span>
+                            <span id="runner-status" class="text-[10px] text-brand-neon">Ready</span>
+                        </div>
+                        <div id="code-output-container" class="w-full h-64 bg-slate-950 rounded-xl border border-slate-800 overflow-hidden relative">
+                            <iframe id="preview-frame" class="w-full h-full border-none"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab 2: Terminal Shell -->
+            <div id="playground-terminal" class="hidden max-w-4xl mx-auto glass rounded-2xl border border-slate-700/80 overflow-hidden shadow-2xl font-mono text-sm">
+                <div class="bg-slate-900 px-4 py-3 border-b border-slate-800 flex items-center justify-between">
+                    <div class="flex items-center gap-2">
+                        <div class="w-3 h-3 rounded-full bg-red-500 cursor-pointer" onclick="clearTerminal()"></div>
+                        <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                    </div>
+                    <div class="text-xs text-slate-400 flex items-center gap-2">
+                        <i class="fa-solid fa-terminal text-brand-cyan"></i> shohruh@dombit-school:~ (bash)
+                    </div>
+                    <button onclick="clearTerminal()" class="text-xs text-slate-500 hover:text-slate-300">Clear</button>
+                </div>
+
+                <div id="terminal-body" class="p-6 h-80 overflow-y-auto bg-black/90 space-y-3 text-slate-300">
+                    <div>
+                        <p class="text-brand-cyan font-bold">Welcome to Shohruh's Terminal Shell v2.0!</p>
+                        <p class="text-slate-400 text-xs mt-1">Type <span class="text-yellow-400">'help'</span> to see commands or try <span class="text-yellow-400">'school'</span>, <span class="text-yellow-400">'about'</span>, <span class="text-yellow-400">'skills'</span>, <span class="text-yellow-400">'python'</span>.</p>
+                    </div>
+                </div>
+
+                <form id="terminal-form" class="bg-slate-900/90 px-4 py-3 border-t border-slate-800 flex items-center gap-2">
+                    <span class="text-brand-cyan font-bold">shohruh$&nbsp;</span>
+                    <input type="text" id="terminal-input" class="w-full bg-transparent border-none outline-none text-white font-mono text-sm focus:ring-0 placeholder-slate-600" placeholder="Type command here (e.g. school, help)..." autocomplete="off">
+                    <button type="submit" class="px-3 py-1 rounded bg-brand-cyan/20 text-brand-cyan text-xs hover:bg-brand-cyan hover:text-black transition-colors">Submit</button>
+                </form>
+            </div>
+
+        </section>
+
+        <section id="projects" class="py-20 border-t border-slate-800/60">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-mono font-bold text-brand-cyan uppercase tracking-widest mb-2"><i class="fa-solid fa-folder-open me-1"></i> Software Works</h2>
+                <h3 class="text-3xl sm:text-4xl font-extrabold text-white">Shohruh's Practice Projects</h3>
+                <p class="text-slate-400 mt-3 text-sm sm:text-base">Applications built during my studies at Dombit International School and personal practice.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <!-- Project 1 -->
+                <div class="glass rounded-2xl border border-slate-800 overflow-hidden group hover:border-brand-cyan/50 transition-all flex flex-col justify-between">
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xs font-mono text-brand-cyan bg-brand-cyan/10 px-2.5 py-1 rounded border border-brand-cyan/20"><i class="fa-solid fa-graduation-cap me-1"></i> Dombit Quiz Tool</span>
+                            <span class="text-xs font-mono text-slate-500">Class 7B Project</span>
+                        </div>
+                        <h4 class="text-xl font-bold text-white group-hover:text-brand-cyan transition-colors">School Knowledge Quiz App</h4>
+                        <p class="text-slate-400 text-sm mt-2 leading-relaxed">
+                            An interactive quiz platform featuring instant scoring, timer countdowns, and questions covering school subjects.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mt-4">
+                            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">HTML5</span>
+                            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">CSS3</span>
+                            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">JavaScript</span>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <button onclick="openProjectModal('School Knowledge Quiz App', 'Interactive quiz web application with score tracking and timed challenges for students.')" class="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-brand-cyan hover:text-slate-950 font-semibold text-xs transition-all flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-eye"></i> Preview Project Details
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="glass rounded-2xl border border-slate-800 overflow-hidden group hover:border-brand-purple/50 transition-all flex flex-col justify-between">
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xs font-mono text-brand-purple bg-brand-purple/10 px-2.5 py-1 rounded border border-brand-purple/20"><i class="fa-solid fa-globe me-1"></i> Personal Site</span>
+                            <span class="text-xs font-mono text-slate-500">Portfolio</span>
+                        </div>
+                        <h4 class="text-xl font-bold text-white group-hover:text-brand-purple transition-colors">Shohruh Student Portfolio</h4>
+                        <p class="text-slate-400 text-sm mt-2 leading-relaxed">
+                            A single-page web app integrating Dombit International School highlights, code sandbox runner, and responsive UI.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mt-4">
+                            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">Tailwind CSS</span>
+                            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">Vanilla JS</span>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <button onclick="openProjectModal('Shohruh Student Portfolio', 'Comprehensive personal portfolio showcasing academic milestones, code sandbox, and career goals.')" class="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-brand-purple hover:text-white font-semibold text-xs transition-all flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-eye"></i> Preview Project Details
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="glass rounded-2xl border border-slate-800 overflow-hidden group hover:border-brand-blue/50 transition-all flex flex-col justify-between">
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xs font-mono text-brand-blue bg-brand-blue/10 px-2.5 py-1 rounded border border-brand-blue/20"><i class="fa-solid fa-calculator me-1"></i> Math Utility</span>
+                            <span class="text-xs font-mono text-slate-500">Grade 7 Science</span>
+                        </div>
+                        <h4 class="text-xl font-bold text-white group-hover:text-brand-blue transition-colors">7B Math Problem Solver</h4>
+                        <p class="text-slate-400 text-sm mt-2 leading-relaxed">
+                            Arithmetic and geometry calculation web tool built specifically to check Class 7B math equations and formula results.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mt-4">
+                            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">JS Math Engine</span>
+                            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">CSS Flexbox</span>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <button onclick="openProjectModal('7B Math Problem Solver', 'Mathematical calculation utility for solving linear equations, geometry perimeter, and area formulas.')" class="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-brand-blue hover:text-white font-semibold text-xs transition-all flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-eye"></i> Preview Project Details
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="glass rounded-2xl border border-slate-800 overflow-hidden group hover:border-brand-neon/50 transition-all flex flex-col justify-between">
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xs font-mono text-brand-neon bg-brand-neon/10 px-2.5 py-1 rounded border border-brand-neon/20"><i class="fa-solid fa-gamepad me-1"></i> Python Game</span>
+                            <span class="text-xs font-mono text-slate-500">Console Logic</span>
+                        </div>
+                        <h4 class="text-xl font-bold text-white group-hover:text-brand-neon transition-colors">Python Coding Quest Game</h4>
+                        <p class="text-slate-400 text-sm mt-2 leading-relaxed">
+                            A text-based adventure written in Python where players advance by answering logic puzzles and code questions.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mt-4">
+                            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">Python 3</span>
+                            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">CLI Logic</span>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <button onclick="openProjectModal('Python Coding Quest Game', 'Console text adventure game built in Python to teach basic programming conditionals and loops.')" class="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-brand-neon hover:text-slate-950 font-semibold text-xs transition-all flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-eye"></i> Preview Project Details
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="contact" class="py-20 border-t border-slate-800/60">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-mono font-bold text-brand-cyan uppercase tracking-widest mb-2"><i class="fa-solid fa-comments me-1"></i> Get In Touch</h2>
+                <h3 class="text-3xl sm:text-4xl font-extrabold text-white">Contact Shohruh</h3>
+                <p class="text-slate-400 mt-3 text-sm sm:text-base">Want to give feedback, share tech tips, or connect regarding school computer science projects?</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                
+                <!-- Info Column -->
+                <div class="lg:col-span-5 glass p-6 sm:p-8 rounded-2xl border border-slate-800 space-y-6">
+                    <h4 class="text-xl font-bold text-white">Contact Details</h4>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        I am always open to connecting with fellow students, teachers, and technology enthusiasts!
+                    </p>
+
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-4 p-3.5 rounded-xl bg-slate-900/80 border border-slate-800">
+                            <div class="w-10 h-10 rounded-lg bg-brand-cyan/10 text-brand-cyan flex items-center justify-center text-lg">
+                                <i class="fa-solid fa-user-graduate"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs text-slate-400 font-mono">Student</div>
+                                <div class="text-sm font-semibold text-white">Shohruh (Class 7B)</div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-4 p-3.5 rounded-xl bg-slate-900/80 border border-slate-800">
+                            <div class="w-10 h-10 rounded-lg bg-brand-purple/10 text-brand-purple flex items-center justify-center text-lg">
+                                <i class="fa-solid fa-school"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs text-slate-400 font-mono">School</div>
+                                <div class="text-sm font-semibold text-white">Dombit International School</div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-4 p-3.5 rounded-xl bg-slate-900/80 border border-slate-800">
+                            <div class="w-10 h-10 rounded-lg bg-brand-neon/10 text-brand-neon flex items-center justify-center text-lg">
+                                <i class="fa-solid fa-laptop-code"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs text-slate-400 font-mono">Aspiration</div>
+                                <div class="text-sm font-semibold text-white">IT Software Engineer</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form Column -->
+                <div class="lg:col-span-7 glass p-6 sm:p-8 rounded-2xl border border-slate-800">
+                    <form id="contact-form" class="space-y-5">
+                        <div>
+                            <label class="block text-xs font-mono text-slate-300 mb-2">Your Name</label>
+                            <input type="text" id="sender-name" required class="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-brand-cyan transition-colors" placeholder="e.g. Alex Johnson">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-mono text-slate-300 mb-2">Your Email</label>
+                            <input type="email" id="sender-email" required class="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-brand-cyan transition-colors" placeholder="alex@example.com">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-mono text-slate-300 mb-2">Message</label>
+                            <textarea id="sender-msg" rows="4" required class="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-brand-cyan transition-colors" placeholder="Hi Shohruh! Great job on your portfolio website..."></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-brand-cyan to-brand-blue text-slate-950 font-bold text-sm uppercase tracking-wider hover:shadow-lg hover:shadow-brand-cyan/25 transition-all">
+                            Send Message <i class="fa-solid fa-paper-plane ms-1"></i>
+                        </button>
+                    </form>
+
+                    <!-- Success Alert Toast -->
+                    <div id="contact-success" class="hidden mt-4 p-4 rounded-xl bg-brand-neon/10 border border-brand-neon/30 text-brand-neon text-sm font-mono text-center">
+                        <i class="fa-solid fa-circle-check me-1"></i> Message sent successfully! Thank you for contacting Shohruh.
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Modal Dialog Preview -->
+    <div id="project-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden flex items-center justify-center p-4">
+        <div class="glass max-w-lg w-full rounded-2xl border border-slate-700 p-6 space-y-4">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                <h3 id="modal-title" class="text-xl font-bold text-white">Project Details</h3>
+                <button onclick="closeModal()" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
+            </div>
+            <p id="modal-desc" class="text-slate-300 text-sm leading-relaxed">Description...</p>
+            <div class="bg-black/90 p-4 rounded-xl font-mono text-xs text-brand-neon border border-slate-800">
+                <p>&gt; Initializing project sandbox preview...</p>
+                <p>&gt; Author: Shohruh (Class 7B)</p>
+                <p>&gt; School: Dombit International School</p>
+                <p>&gt; Execution Status: Active</p>
+            </div>
+            <div class="pt-2 text-right">
+                <button onclick="closeModal()" class="px-5 py-2 rounded-xl bg-brand-cyan text-slate-950 font-bold text-xs">Close Preview</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="border-t border-slate-800/80 py-8 bg-brand-dark/95">
+        <div class="max-w-7xl mx-auto px-4 text-center space-y-2">
+            <p class="font-mono text-xs text-slate-400">
+                Crafted with <i class="fa-solid fa-heart text-red-500"></i> by <span class="text-brand-cyan font-bold">Shohruh</span> • Class 7B
+            </p>
+            <p class="text-[11px] text-slate-500">Dombit International School • Future IT Programmer & Software Engineer</p>
+        </div>
+    </footer>
+
+    <script>
+        // 1. Dynamic Header Typing Effect
+        const typingText = document.getElementById('typing-text');
+        const phrases = [
+            "Student at Dombit International School",
+            "Class 7B Tech Enthusiast",
+            "Future IT Software Engineer",
+            "Python & Web Developer"
+        ];
+        let phraseIdx = 0, charIdx = 0, isDeleting = false;
+
+        function typeLoop() {
+            const current = phrases[phraseIdx];
+            if (isDeleting) {
+                typingText.textContent = current.substring(0, charIdx - 1);
+                charIdx--;
+            } else {
+                typingText.textContent = current.substring(0, charIdx + 1);
+                charIdx++;
+            }
+
+            let speed = isDeleting ? 40 : 80;
+
+            if (!isDeleting && charIdx === current.length) {
+                speed = 2000;
+                isDeleting = true;
+            } else if (isDeleting && charIdx === 0) {
+                isDeleting = false;
+                phraseIdx = (phraseIdx + 1) % phrases.length;
+                speed = 400;
+            }
+
+            setTimeout(typeLoop, speed);
+        }
+
+        // 2. Mobile Menu Toggle
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+        });
+        mobileBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+        // 3. Code Playground Presets & Execution Runner
+        const codeEditor = document.getElementById('code-editor');
+        const previewFrame = document.getElementById('preview-frame');
+        const langSelect = document.getElementById('code-lang-select');
+        const runnerStatus = document.getElementById('runner-status');
+
+        const presets = {
+            html: `<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { background: #0f172a; color: #38bdf8; font-family: sans-serif; padding: 20px; text-align: center; }
+    .btn { background: #06b6d4; color: black; border: none; padding: 10px 20px; border-radius: 8px; font-weight: bold; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <h3>Dombit School Interactive Demo</h3>
+  <p>Student: Shohruh (Class 7B)</p>
+  <button class="btn" onclick="alert('Hello from Shohruh!')">Click Me!</button>
+</body>
+</html>`,
+            python: `# Simulated Python Output in JS Runner
+def greeting(name, school, grade):
+    print(f"Hello World! My name is {name}.")
+    print(f"I study at {school} in Class {grade}.")
+    print("Goal: Become an IT Programmer!")
+
+greeting("Shohruh", "Dombit International School", "7B")`
+        };
+
+        function loadPresetCode() {
+            const lang = langSelect.value;
+            codeEditor.value = presets[lang];
+            runCodePlayground();
+        }
+
+        function runCodePlayground() {
+            const lang = langSelect.value;
+            const code = codeEditor.value;
+            const doc = previewFrame.contentDocument || previewFrame.contentWindow.document;
+
+            if (lang === 'html') {
+                doc.open();
+                doc.write(code);
+                doc.close();
+            } else {
+                // Simulate Python script print execution inside IFrame preview
+                let simulatedOutput = code.replace(/print\((.*?)\)/g, (match, p1) => `document.write('<div style="color:#10b981;font-family:monospace;padding:4px;">&gt; ' + ${p1} + '</div>');`);
+                doc.open();
+                doc.write(`<!DOCTYPE html><html><body style="background:#020617;color:#f8fafc;padding:15px;font-family:monospace;">${simulatedOutput}</body></html>`);
+                doc.close();
+            }
+            runnerStatus.textContent = "Executed";
+        }
+
+        // Playground Tab Switcher
+        function switchPlaygroundTab(tab) {
+            const runnerTab = document.getElementById('playground-runner');
+            const terminalTab = document.getElementById('playground-terminal');
+            const btnRunner = document.getElementById('tab-runner-btn');
+            const btnTerminal = document.getElementById('tab-terminal-btn');
+
+            if (tab === 'runner') {
+                runnerTab.classList.remove('hidden');
+                terminalTab.classList.add('hidden');
+                btnRunner.className = "px-5 py-2.5 rounded-xl font-mono text-xs font-bold transition-all bg-brand-cyan text-slate-950 shadow-lg shadow-brand-cyan/20 flex items-center gap-2";
+                btnTerminal.className = "px-5 py-2.5 rounded-xl font-mono text-xs font-bold transition-all bg-slate-800 text-slate-300 hover:text-white flex items-center gap-2";
+            } else {
+                runnerTab.classList.add('hidden');
+                terminalTab.classList.remove('hidden');
+                btnTerminal.className = "px-5 py-2.5 rounded-xl font-mono text-xs font-bold transition-all bg-brand-cyan text-slate-950 shadow-lg shadow-brand-cyan/20 flex items-center gap-2";
+                btnRunner.className = "px-5 py-2.5 rounded-xl font-mono text-xs font-bold transition-all bg-slate-800 text-slate-300 hover:text-white flex items-center gap-2";
+            }
+        }
+
+        // 4. CLI Terminal Logic
+        const terminalForm = document.getElementById('terminal-form');
+        const terminalInput = document.getElementById('terminal-input');
+        const terminalBody = document.getElementById('terminal-body');
+
+        const commands = {
+            'help': 'Available commands: <span class="text-yellow-400">school</span>, <span class="text-yellow-400">about</span>, <span class="text-yellow-400">skills</span>, <span class="text-yellow-400">python</span>, <span class="text-yellow-400">projects</span>, <span class="text-yellow-400">clear</span>',
+            'school': 'Institution: <span class="text-brand-cyan">Dombit International School</span> | Class: <span class="text-brand-purple">7B</span>',
+            'about': 'Hi! I am <span class="text-brand-cyan">Shohruh</span>, a 7th grade student studying IT and web programming.',
+            'skills': 'Languages: HTML5, CSS3, JavaScript, Python 3, Math Logic.',
+            'python': '<span class="text-brand-neon">print("Dombit International School Class 7B - Shohruh")</span>',
+            'projects': 'Projects: School Quiz App, Portfolio Web App, Math Solver, Python Quest Game.'
+        };
+
+        terminalForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const cmd = terminalInput.value.trim().toLowerCase();
+            if (!cmd) return;
+
+            appendTerminalLine(`shohruh$&nbsp;${terminalInput.value}`, 'text-slate-400 font-bold');
+
+            if (cmd === 'clear') {
+                clearTerminal();
+            } else if (commands[cmd]) {
+                appendTerminalLine(commands[cmd], 'text-brand-cyan');
+            } else {
+                appendTerminalLine(`Command not found: '${cmd}'. Type <span class="text-yellow-400">'help'</span> for options.`, 'text-red-400');
+            }
+
+            terminalInput.value = '';
+            terminalBody.scrollTop = terminalBody.scrollHeight;
+        });
+
+        function appendTerminalLine(html, textClass = 'text-slate-300') {
+            const div = document.createElement('div');
+            div.className = textClass + ' text-xs sm:text-sm';
+            div.innerHTML = html;
+            terminalBody.appendChild(div);
+        }
+
+        function clearTerminal() {
+            terminalBody.innerHTML = `<div><p class="text-brand-cyan font-bold">Terminal Cleared.</p><p class="text-slate-400 text-xs mt-1">Type <span class="text-yellow-400">'help'</span> for commands.</p></div>`;
+        }
+
+        // 5. Project Preview Modal
+        const modal = document.getElementById('project-modal');
+        function openProjectModal(title, desc) {
+            document.getElementById('modal-title').textContent = title;
+            document.getElementById('modal-desc').textContent = desc;
+            modal.classList.remove('hidden');
+        }
+        function closeModal() {
+            modal.classList.add('hidden');
+        }
+
+        // 6. Contact Form Logic
+        document.getElementById('contact-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const successToast = document.getElementById('contact-success');
+            successToast.classList.remove('hidden');
+            e.target.reset();
+            setTimeout(() => successToast.classList.add('hidden'), 5000);
+        });
+
+        // Initialize default code preset on load
+        window.addEventListener('DOMContentLoaded', () => {
+            typeLoop();
+            loadPresetCode();
+        });
+    </script>
+</body>
+</html>
